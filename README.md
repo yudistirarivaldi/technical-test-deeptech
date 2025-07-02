@@ -80,7 +80,7 @@
    }
    ```
 
-5. Lihat Profil User
+5. GET Profil User
    
    Endpoint: GET /api/users
 
@@ -130,6 +130,48 @@
    {
        "responseCode": "00",
        "message": "User updated successfully"
+   }
+   ```
+
+7. GET Data Categories
+   
+   Endpoint: PUT /api/categories
+
+   Headers:
+   ```Authorization: Bearer <JWT_TOKEN>```
+
+   Response:
+   ```
+   {
+       "responseCode": "00",
+       "message": "Success",
+       "data": [
+           {
+               "ID": 1,
+               "Name": "ATK",
+               "Description": "Alat Tulis Kantor",
+               "CreatedAt": "0001-01-01T00:00:00Z",
+               "UpdatedAt": "0001-01-01T00:00:00Z"
+           }
+       ]
+   }
+   ```
+6. Create Transaksi
+   
+   Endpoint: GET /transactions
+
+   Headers:
+   ```Authorization: Bearer <JWT_TOKEN>```
+
+   ```
+   {
+       "transaction_type": "OUT",
+       "items": [
+           {
+               "product_id": 1,
+               "quantity": 1000
+           }
+       ]
    }
    ```
 
