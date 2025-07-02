@@ -57,7 +57,7 @@
    }
    ```
  
-3. Login User
+2. Login User
    
    User login untuk mendapatkan token JWT yang digunakan untuk semua endpoint selanjutnya.
 
@@ -80,7 +80,7 @@
    }
    ```
 
-5. GET Profil User
+3. GET Profil User
    
    Endpoint: GET /api/users
 
@@ -106,7 +106,7 @@
    }
    ```
 
-7. Update Data User
+4. Update Data User
    
    Endpoint: PUT /api/users
 
@@ -133,7 +133,29 @@
    }
    ```
 
-7. GET Data Categories
+5. GET Data Categories
+   
+   Endpoint: PUT /api/categories/:id
+
+   Headers:
+   ```Authorization: Bearer <JWT_TOKEN>```
+
+   Response:
+   ```
+   {
+       "responseCode": "00",
+       "message": "Success",
+       "data": {
+           "ID": 1,
+           "Name": "ATK",
+           "Description": "Alat Tulis Kantor",
+           "CreatedAt": "0001-01-01T00:00:00Z",
+           "UpdatedAt": "0001-01-01T00:00:00Z"
+       }
+   }
+   ```
+
+6. GET Data Categories Detail
    
    Endpoint: PUT /api/categories
 
@@ -156,51 +178,175 @@
        ]
    }
    ```
-6. Create Transaksi
+
+7. Create Data Categories
    
-   Endpoint: GET /transactions
+   Endpoint: POST /api/categories
 
    Headers:
    ```Authorization: Bearer <JWT_TOKEN>```
 
+   Request:
    ```
    {
-       "transaction_type": "OUT",
-       "items": [
-           {
-               "product_id": 1,
-               "quantity": 1000
-           }
-       ]
+       "name": "ATK",
+       "Description": "Alat Tulis Kantor"
    }
    ```
 
-6. Lihat Riwayat Transaksi
+   Response:
+   ```
+   {
+       "responseCode": "00",
+       "message": "Category created successfully"
+   }
+   ```
+
+8. Update Data Categories
    
-   Endpoint: GET /transactions/history
+   Endpoint: PUT /api/categories/:id
 
    Headers:
    ```Authorization: Bearer <JWT_TOKEN>```
 
+   Request:
+   ```
+   {
+       "name": "ATK Anak",
+       "Description": "Alat Tulis Kantor Anak"
+   }
+   ```
+
+   Response:
+   ```
+   {
+       "responseCode": "00",
+       "message": "Category updated successfully"
+   }
+   ```
+
+9. Delete Data Categories
+   
+   Endpoint: DELETE /api/categories/:id
+
+   Headers:
+   ```Authorization: Bearer <JWT_TOKEN>```
+
+   Response:
+   ```
+   {
+       "responseCode": "00",
+       "message": "Category deleted successfully"
+   }
+   ```
+
+10. GET Data Categories
+   
+   Endpoint: PUT /api/categories/:id
+
+   Headers:
+   ```Authorization: Bearer <JWT_TOKEN>```
+
+   Response:
+   ```
+   {
+       "responseCode": "00",
+       "message": "Success",
+       "data": {
+           "ID": 1,
+           "Name": "ATK",
+           "Description": "Alat Tulis Kantor",
+           "CreatedAt": "0001-01-01T00:00:00Z",
+           "UpdatedAt": "0001-01-01T00:00:00Z"
+       }
+   }
+   ```
+
+11. GET Data Categories Detail
+   
+   Endpoint: PUT /api/categories
+
+   Headers:
+   ```Authorization: Bearer <JWT_TOKEN>```
+
+   Response:
    ```
    {
        "responseCode": "00",
        "message": "Success",
        "data": [
            {
-               "id": 22,
-               "user_id": 1,
-               "transaction_type": "OUT",
-               "items": [
-                   {
-                       "id": 1,
-                       "transaction_id": 22,
-                       "product_id": 1,
-                       "quantity": 10
-                   }
-               ]
+               "ID": 1,
+               "Name": "ATK",
+               "Description": "Alat Tulis Kantor",
+               "CreatedAt": "0001-01-01T00:00:00Z",
+               "UpdatedAt": "0001-01-01T00:00:00Z"
            }
        ]
    }
    ```
+
+12. Create Data Categories
+   
+   Endpoint: POST /api/categories
+
+   Headers:
+   ```Authorization: Bearer <JWT_TOKEN>```
+
+   Request:
+   ```
+   {
+       "name": "ATK",
+       "Description": "Alat Tulis Kantor"
+   }
+   ```
+
+   Response:
+   ```
+   {
+       "responseCode": "00",
+       "message": "Category created successfully"
+   }
+   ```
+
+13. Update Data Categories
+   
+   Endpoint: PUT /api/categories/:id
+
+   Headers:
+   ```Authorization: Bearer <JWT_TOKEN>```
+
+   Request:
+   ```
+   {
+       "name": "ATK Anak",
+       "Description": "Alat Tulis Kantor Anak"
+   }
+   ```
+
+   Response:
+   ```
+   {
+       "responseCode": "00",
+       "message": "Category updated successfully"
+   }
+   ```
+
+14. Delete Data Categories
+   
+   Endpoint: DELETE /api/categories/:id
+
+   Headers:
+   ```Authorization: Bearer <JWT_TOKEN>```
+
+   Response:
+   ```
+   {
+       "responseCode": "00",
+       "message": "Category deleted successfully"
+   }
+   ```
+
+   
+
 
