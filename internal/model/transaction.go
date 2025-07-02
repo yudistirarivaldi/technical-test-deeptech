@@ -12,3 +12,10 @@ type TransactionItem struct {
 	ProductID     int64 `json:"product_id"`
 	Quantity      int64 `json:"quantity"`
 }
+
+type TransactionWithItems struct {
+	ID              int64             `json:"id"`
+	UserID          int64             `json:"user_id"`
+	TransactionType string            `json:"transaction_type"`
+	Items           []TransactionItem `json:"items"`
+}

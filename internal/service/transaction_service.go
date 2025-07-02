@@ -79,3 +79,7 @@ func (s *TransactionService) Create(ctx context.Context, req *dto.CreateTransact
 
 	return nil
 }
+
+func (s *TransactionService) GetByUserID(ctx context.Context, userID int64) ([]model.TransactionWithItems, error) {
+	return s.repo.GetTransactionsByUserID(ctx, userID)
+}

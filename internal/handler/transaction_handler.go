@@ -63,3 +63,29 @@ func (h *TransactionHandler) HandleCreate(w http.ResponseWriter, r *http.Request
 		Message:      "Transaction created successfully",
 	})
 }
+
+func (h *TransactionHandler) HandleGetUserTransactions(w http.ResponseWriter, r *http.Request) {
+	userID, ok := middleware.GetUserIDFromContext(r.Context())
+	if !ok || userID == 0 {
+		utils.WriteJSON(w, http.StatusUnauthorized, model.Response{
+			ResponseCode: "01",
+			Message:      "Unauthorized",
+		})
+		return
+	}
+
+	transactions, err := h.transactionService.GetByUserID(r.Context(), userID)
+	if err != nil {
+		utils.WriteJSON(w, http.StatusInternalServerError, model.Response{
+			ResponseCode: "01",
+			Message:      "Failed to fetch transactions",
+		})
+		return
+	}
+
+	utils.WriteJSON(w, http.StatusOK, model.Response{
+		ResponseCode: "00",
+		Message:      "Success",
+		Data:         transactions,
+	})
+}

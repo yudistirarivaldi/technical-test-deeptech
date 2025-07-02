@@ -108,6 +108,7 @@ func startHTTPServer(cfg *config.Config, services *appServices) {
 	r.HandleFunc("/api/products/{id}", middleware.JWTMiddleware(cfg.JWT.Secret, productHandler.HandleDelete)).Methods("DELETE")
 
 	r.Handle("/api/transactions", middleware.JWTMiddleware(cfg.JWT.Secret, transactionHandler.HandleCreate)).Methods("POST")
+	r.Handle("/api/transactions/history", middleware.JWTMiddleware(cfg.JWT.Secret, transactionHandler.HandleGetUserTransactions)).Methods("GET")
 
 	r.Handle("/api/users", middleware.JWTMiddleware(cfg.JWT.Secret, userHandler.HandleGetProfile)).Methods("GET")
 	r.Handle("/api/users", middleware.JWTMiddleware(cfg.JWT.Secret, userHandler.HandleUpdateUser)).Methods("PUT")
