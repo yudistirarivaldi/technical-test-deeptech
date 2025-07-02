@@ -3,7 +3,7 @@
 
    ```
    git clone https://github.com/yudistirarivaldi/technical-test-deeptech.git
-   cd technical-test-kreditplus
+   cd technical-test-deeptech
    ```
 
 2. Siapkan File .env
