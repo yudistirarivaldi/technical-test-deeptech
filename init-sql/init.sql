@@ -1,0 +1,48 @@
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  first_name VARCHAR(100) NOT NULL,
+  last_name VARCHAR(100) NOT NULL,
+  email VARCHAR(150) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  date_of_birth DATE,
+  gender ENUM('L', 'P'),
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE categories (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  description TEXT,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE products (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  description TEXT,
+  image_url TEXT,
+  category_id INT NOT NULL,
+  stock INT NOT NULL DEFAULT 0,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (category_id) REFERENCES categories(id)
+);
+
+CREATE TABLE transactions (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  transaction_type ENUM('IN', 'OUT') NOT NULL,
+  user_id INT NOT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE transaction_items (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  transaction_id INT NOT NULL,
+  product_id INT NOT NULL,
+  quantity INT NOT NULL,
+  FOREIGN KEY (transaction_id) REFERENCES transactions(id),
+  FOREIGN KEY (product_id) REFERENCES products(id)
+);
