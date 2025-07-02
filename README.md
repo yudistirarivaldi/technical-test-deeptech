@@ -146,19 +146,17 @@
        "message": "Success",
        "data": [
            {
-               "ID": 2,
-               "ConsumerID": 5,
-               "ContractNumber": "TXN-20250618001",
-               "OTR": 1500000,
-               "AdminFee": 50000,
-               "Installment": 600000,
-               "Interest": 100000,
-               "AssetName": "Kulkas LG",
-               "SourceChannel": "ecommerce",
-               "Tenor": 6,
-               "DownPayment": 200000,
-               "CreatedAt": "2025-06-18T15:37:45.964Z",
-               "UpdatedAt": "2025-06-18T15:37:45.964Z"
+               "id": 22,
+               "user_id": 1,
+               "transaction_type": "OUT",
+               "items": [
+                   {
+                       "id": 1,
+                       "transaction_id": 22,
+                       "product_id": 1,
+                       "quantity": 10
+                   }
+               ]
            }
        ]
    }
